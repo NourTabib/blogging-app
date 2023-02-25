@@ -1,0 +1,30 @@
+﻿@model Blog
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h2 class="card-title">@Model.Url</h2>
+                    <h5 class="card-subtitle mb-2 text-muted">@Model.Category</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h3 class="mb-3">Posts</h3>
+            <ul class="list-group">
+                @foreach (var post in Model.Posts)
+                {
+                    <li class="list-group-item">
+                        <h5>@post.Title</h5>
+                        <p>@post.Content</p>
+                        <small class="text-muted">@post.PublishedDateTime.ToString("MMM dd, yyyy")</small>
+                        <a href="@Url.Action("PostDetails", "Home", new { postId = post.PostId })">Read more</a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
